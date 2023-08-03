@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.board.mbbs.MbbsDAO">
+
+<resultMap type="com.study.board.mbbs.MbbsTblVO" id="mbbsMap">
+    <result property="rowNum"   column="RN" />
+    <result property="userId"   column="U_ID" />
+    <result property="seq"      column="MB_SEQ" />
+    <result property="title"    column="MB_TITLE" />
+    <result property="content"  column="MB_CONTENT"/>
+    <result property="divi"     column="HB_DIVI"/>
+    <result property="regDate"  column="MB_DATE"/>
+</resultMap>
+
+<select id="selectMbbsRowCount" resultType="integer">
+    SELECT COUNT(*) FROM MB_TBL
+</select>
+
+<select id="selectMbbsList" resultMap="mbbsMap">
+    SELECT * FROM (SELECT ROW_NUMBER() OVER (ORDER BY MB_SEQ DESC) AS RN, MB_TBL.* FROM MB_TBL) 
+    WHERE RN <![CDATA[>=]]> (#{page} * #{rowsPerPage}) + 1 AND 
+          RN <![CDATA[<=]]> (#{page} + 1) * #{rowsPerPage}
+          ORDER BY MB_SEQ DESC
+</select>
+
+<select id="selectMbbsContent" resultMap="mbbsMap">
+    SELECT * FROM MB_TBL WHERE U_ID = #{userId} AND MB_SEQ = #{seq}
+</select>
+
+<update id="updateMbbsContent">
+    UPDATE MB_TBL SET MB_TITLE = #{title}, MB_CONTENT = #{content} 
+    WHERE U_ID = #{userId} AND MB_SEQ = #{seq}
+</update>
+
+<insert id="insertMbbsContent">
+    INSERT INTO MB_TBL(U_ID, MB_SEQ, MB_TITLE, MB_CONTENT, MB_DATE, HB_DIVI)
+        VALUES (#{userId}, (SELECT NVL(max(MB_SEQ), 0) + 1 FROM MB_TBL WHERE U_ID = #{userId}), 
+                #{title}, #{content}, sysdate, #{divi})
+</insert>
+
+<delete id="deleteMbbsContent">
+    DELETE FROM MB_TBL 
+    WHERE U_ID = #{userId} AND MB_SEQ = #{seq}
+</delete>
+
+</mapper>

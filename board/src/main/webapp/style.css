@@ -1,0 +1,357 @@
+body {
+    height: inherit;
+    background-color: rgb(251, 246, 248);
+    /* font-family: 'REM', sans-serif; */
+}
+
+.button1{
+    background-color: pink;
+    border-color: pink;
+    border-radius: 5px;
+    margin-left: 5px;
+
+}
+.button{
+    background-color: pink;
+    border-color: pink;
+    border-radius: 5px;
+}
+
+#title {
+    display: flex;
+    justify-content: left;
+
+    /* 수정 가능 */
+    position: absolute;
+    top: 40px;
+    margin: 0 auto;
+}
+
+#main-title {
+    color: rgb(102, 102, 102);
+    text-decoration: underline;
+    font-size: 3rem;
+    font-weight: bold;
+    position: relative;
+    top: 20px;
+}
+
+.main-icon {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.profile-h1 {
+    position: relative;
+    top: 120px;
+}
+
+#grobal-nav {
+    float: right;
+    position: absolute;
+    right: 300px;
+    top: 120px;
+    display: flex;
+    justify-content: right;
+
+}
+
+#grobal-nav a {
+    text-decoration: none;
+    color: rgb(102, 102, 102);
+    font-weight: bold;
+    margin-left: 2rem;
+}
+
+.sticky-element {
+    /* display: none; */
+    position: fixed;
+    opacity: 1;
+    /* 밑에 블럭 작업할 때 헷갈리니까 투명하게 해놓기 */
+    font-size: 5rem;
+    font-weight: bold;
+    text-align: center;
+
+    width: 100%;
+    height: 6em;
+    left: 0;
+    top: 5em;
+}
+
+/* 메인페이지 */
+#mainpage-logo {
+
+    display: flex;
+    justify-content: center;
+
+    /* 수정 가능 */
+    position: relative;
+    top: 50px;
+
+}
+
+
+#section1 {
+    /* border: 1px solid rebeccapurple; */
+    height: 180px;
+    
+
+}
+
+#main-hr {
+    position: relative;
+    border: 1px solid black;
+    top: 65px;
+}
+
+/* 메인페이지 레이아웃 */
+#main-gird {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    border: 1px solid rgb(208, 142, 0);
+}
+
+#main-container {
+    position: absolute;
+    display: grid;
+
+    top: 10%;
+    left: 10%;
+
+    grid-template-columns: 250px 250px 250px;
+    grid-template-rows: 250px 250px;
+    gap: 50px;
+    justify-content: center;
+
+}
+
+.main-container1 {
+
+    position: absolute;
+    width: 15%;
+    height: 100%;
+    border-right: 1px solid gray;
+}
+
+.main-container2 {
+    position: absolute;
+    width: 70%;
+    height: 100%;
+    z-index: -5;
+    left: 15%;
+    background-color: rgb(251, 246, 248);
+
+}
+
+.main-container3 {
+    position: absolute;
+    width: 15%;
+    height: 100%;
+    left: 85%;
+    border-left: 1px solid gray;
+
+}
+
+.serch {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 100px;
+}
+
+.input-group {
+    position: relative;
+    top: 100px;
+    margin: 0 auto;
+    width: 500px;
+    height: 50px;
+}
+
+a {
+    text-decoration: none;
+    color: gray;
+}
+
+#menuImg {
+    position: relative;
+    top: 80px;
+    display: flex;
+    justify-content: center;
+}
+
+.dropdown {
+    position: relative;
+    top: 10%;
+    text-align: center;
+}
+
+/* 네비게이션 */
+a .menuList {
+    position: relative;
+    top: 5%;
+    display: flex;
+    margin: auto;
+    margin-top: 25%;
+
+}
+
+/* 아이콘 */
+.kategorieImg {
+    width: 80px;
+    height: 80px;
+}
+
+#mainTbl {
+    width: 50%;
+    position: relative;
+    top: -150px;
+    margin: 0 auto;
+    background-color: rgb(222, 222, 222);
+}
+
+
+.kategorieElements {
+    width: 100px;
+    height: 100px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+#carouselExampleIndicators {
+    border: 1px solid gray;
+    position: relative;
+    top: 400px;
+    margin: 0 auto;
+    max-width: 50%;
+
+}
+
+.state
+{
+    text-align: right;
+    margin-right: 20%;
+
+    /* 버튼 반만 링크이동 가능 수정해야함 */
+    /* z-index: 30; */
+}
+
+
+.writeContent {
+    text-align: right;
+    margin-right: 12%;
+}
+
+.container {
+    margin-left: 55%;
+}
+
+/* 박스 */
+
+.box {
+    background: rgb(255, 216, 216);
+    width: 100%;
+    height: 100%;
+    font-size: 30px;
+    text-align: center;
+    border-radius: 20px;
+}
+#thead {
+    background-color: rgb(217, 217, 217);
+    border-color: pink;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+.btn {
+    text-align: center;
+}
+
+#btnWrite{
+    position: absolute;
+    top: 75%;
+    left: 80%;
+}
+
+#indexBtn{
+    display: flex;
+    justify-content: center;
+}
+
+
+.box-button {
+    position: relative;
+    background-color: black;
+    font-size: 20px;
+    top: 60%;
+    color: white;
+    border-radius: 10px;
+}
+
+
+.no-underline {
+    text-decoration: none;
+}
+
+/* content */
+#content,
+#comment,
+#contentBtn {
+    margin: auto;
+    text-align: center;
+}
+
+#content {
+    margin-top: 150px;
+}
+
+#contentBBS {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    border: 1px solid pink;
+    width: 60%;
+}
+
+
+#comment {
+    margin-top: 50px;
+
+}
+
+#txtTitle {
+    width: 30%;
+}
+
+#txtContent {
+    width: 60%;
+    height: 300px;
+}
+
+
+
+.title,
+.btn {
+    text-align: center;
+}
+
+
+/* 만남의 광장 */
+    /* 만남의 광장 타이틀 */
+#meetSpace{
+    position: relative;
+    top: 100px;
+    text-align: center;
+    color: rgb(75, 75, 75);
+}
+
+#tblBBS {
+    width: 80%;
+    height: 60%;
+    margin: auto;
+    text-align: center;
+    margin-top: 10%;
+    background-color: white;
+}
+/* 만남장소 */
+
+/* 만남 후기 */

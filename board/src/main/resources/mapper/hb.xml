@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.board.hbbs.HDAO">
+
+<resultMap type="com.study.board.hbbs.HTblVO" id="bbsMap">
+    <result property="divi"     column="HB_DIVI"/>
+    <result property="name"  column="HB_NAME"/>
+</resultMap>
+
+<select id="selectBbsContent" resultMap="bbsMap">
+    SELECT * FROM BOARD_TBL WHERE USERID = #{userId} AND SEQ = #{seq}
+</select>
+
+</mapper>

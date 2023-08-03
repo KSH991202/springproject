@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.board.rvbbs.RVbbsDAO">
+
+<resultMap type="com.study.board.rvbbs.RVbbsTblVO" id="bbsMap">
+    <result property="rowNum"   column="RN" />
+    <result property="userId"   column="U_ID" />
+    <result property="seq"      column="RV_SEQ" />
+    <result property="title"    column="RV_TITLE" />
+    <result property="content"  column="RV_CONTENT"/>
+    <result property="score"  column="RV_SCORE"/>
+    <result property="divi"     column="HB_DIVI"/>
+    <result property="regDate"  column="RV_DATE"/>
+</resultMap>
+
+<select id="selectBbsRowCount" resultType="integer">
+    SELECT COUNT(*) FROM RV_TBL    
+</select>
+
+<select id="selectBbsList" resultMap="bbsMap">
+    SELECT * FROM (SELECT rownum RN, RV_TBL.* FROM RV_TBL) 
+    WHERE RN <![CDATA[>=]]> (#{page} * #{rowsPerPage}) + 1 AND 
+          RN <![CDATA[<=]]> (#{page} + 1) * #{rowsPerPage}    
+</select>
+
+<select id="selectBbsContent" resultMap="bbsMap">
+    SELECT * FROM RV_TBL WHERE U_ID = #{userId} AND RV_SEQ = #{seq}
+</select>
+
+<update id="updateBbsContent">
+    UPDATE RV_TBL SET RV_TITLE = #{title}, RV_CONTENT = #{content} 
+    WHERE U_ID = #{userId} AND RV_SEQ = #{seq}
+</update>
+
+<insert id="insertBbsContent">
+    INSERT INTO RV_TBL(U_ID, RV_SEQ, RV_TITLE, RV_CONTENT, RV_DATE, HB_DIVI)
+        VALUES (#{userId}, (SELECT NVL(max(seq), 0) + 1 FROM RV_TBL WHERE U_ID = #{userId}), 
+                #{title}, #{content}, sysdate, #{divi})
+</insert>
+
+</mapper>
